@@ -1,10 +1,15 @@
-fn main() {
-    for number in 1..101 {
-        println!("{}", crackle_pop(number));
+extern crate wasm_bindgen;
+use wasm_bindgen::prelude::*;
+
+#[wasm_bindgen]
+pub fn crackle_pop(limit: i32) {
+    for number in 1..limit+1 {
+        println!("{}", get_result(number));
     };
 }
 
-fn crackle_pop (x: i32) -> String {
+#[wasm_bindgen]
+pub fn get_result (x: i32) -> String {
     if is_divisible_by(3, x) && is_divisible_by(5, x) {
         return String::from("CracklePop");
     } else  if is_divisible_by(3, x) {
